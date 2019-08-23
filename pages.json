@@ -1,6 +1,5 @@
 {
 	"pages": [
-		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/tabbar/index/index",
 			"style": {
@@ -19,6 +18,12 @@
 		{
 			"path": "pages/tabbar/personal/personal",
 			"style": {}
+		},
+		{
+			"path": "pages/editInfo/editInfo",
+			"style": {
+				"navigationBarTitleText": "编辑资料"
+			}
 		}
 	],
 	"globalStyle": {

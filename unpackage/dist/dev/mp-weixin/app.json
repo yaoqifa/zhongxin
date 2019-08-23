@@ -3,7 +3,8 @@
     "pages/tabbar/index/index",
     "pages/tabbar/square/square",
     "pages/tabbar/message/message",
-    "pages/tabbar/personal/personal"
+    "pages/tabbar/personal/personal",
+    "pages/editInfo/editInfo"
   ],
   "subPackages": [],
   "window": {
@@ -44,6 +45,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap61.json"
+  "usingComponents": {}
 }

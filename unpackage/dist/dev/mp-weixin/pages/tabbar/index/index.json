@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "zhongxin",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "card": "/components/card"
+  }
 }

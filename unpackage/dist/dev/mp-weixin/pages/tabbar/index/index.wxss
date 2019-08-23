@@ -1,7 +1,8 @@
 
-.content {
-	text-align: center;
-	height: 400rpx;
-	margin-top: 200rpx;
+.page-ontainer.data-v-64c507c5 {
+  background: #eee;
+  min-height: 100%;
+  overflow: scroll;
 }
+
 
