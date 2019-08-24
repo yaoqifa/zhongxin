@@ -1,19 +1,22 @@
 <template lang="pug">
-	view.personal
-		view.top(v-if="userInfo.avatarUrl" @click="goToPage('/pages/editInfo/editInfo')")
-			image.avatar(:src="userInfo.avatarUrl" mode="cover")
-			text.name {{userInfo.nickName}}
-			text.edit 编辑资料 >
-		view.top(v-else)
-			image.avatar(src="/static/logo.png")
-			button.name(open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true") 点我登录
-		view.content
-			view.item.dynamics(@click="goToPage('/pages/dynamics/dynamics')")
-				text 个人动态
-			view.item.coupon(@click="goToPage('/pages/coupon/coupon')")
-				text 我的桃花券
-			view.item.setting(@click="goToPage('/pages/setting/setting')")
-				text 设置
+	view
+		view.empty(v-if="!userInfo.nickName")
+			text 您还未登录，登录后这里将出现个人信息管理以及筛选等功能
+			button.login(open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true") 点击登录
+		view.personal(v-else)
+			view.top(@click="goToPage('/pages/editInfo/editInfo')")
+				image.avatar(:src="userInfo.avatarUrl" mode="cover")
+				text.name {{userInfo.nickName}}
+				text.edit 编辑资料 >
+			view.content
+				view.item.dynamics(@click="goToPage('/pages/dynamics/dynamics')")
+					text 个人动态
+				view.item.coupon(@click="goToPage('/pages/coupon/coupon')")
+					text 我的桃花券
+				view.item.setting(@click="goToPage('/pages/setting/setting')")
+					text 设置
+				view.item
+					button(@click="clearUserInfo") 清除登陆信息
 </template>
 
 <script>
@@ -38,7 +41,10 @@
 				}
 				uni.navigateTo({
 					url
-				});
+				})
+			},
+			clearUserInfo() {
+				uni.removeStorageSync('userInfo')
 			}
 		}
 	}
@@ -88,6 +94,25 @@
 				align-items: center;
 				border-bottom: 1px solid #eee;
 			}
+		}
+	}
+	.empty {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 40% 150rpx 0;
+		color: #999;
+		font-size: 14px;
+		text-align: center;
+		.login {
+			flex: 1;
+			font-size: 14px;
+			margin-top: 30rpx;
+			width: 320rpx;
+			height: 80rpx;
+			color: #fff;
+			background: #111;
 		}
 	}
 </style>

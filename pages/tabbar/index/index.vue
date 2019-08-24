@@ -8,6 +8,7 @@
 
 <script>
 import card from '@/components/card'
+import { hasLogin } from '@/utils/index.js'
 
 export default {
   data () {
@@ -38,7 +39,25 @@ export default {
       ]
     }
   },
-
+  onShow() {
+    if (!hasLogin()) {
+			uni.showModal({
+				title: '提示',
+				content: '微信授权登陆为微信官方提供，不会对您的隐私信息进行记录哒～ 授权之后就能认识更多优质小哥哥小姐姐啦',
+				cancelText: '取消',
+				confirmText: '去授权',
+				success: (res) => {
+					if (res.confirm) {
+            setTimeout(() => {
+              uni.navigateTo({
+                url: '/pages/tabbar/personal/personal'
+              })
+            }, 1000)
+					}
+				}
+			})
+    }
+  },
   components: {
     card
   },
