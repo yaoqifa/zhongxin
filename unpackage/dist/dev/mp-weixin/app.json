@@ -4,7 +4,10 @@
     "pages/tabbar/square/square",
     "pages/tabbar/message/message",
     "pages/tabbar/personal/personal",
-    "pages/editInfo/editInfo"
+    "pages/editInfo/editInfo",
+    "pages/dynamics/dynamics",
+    "pages/coupon/coupon",
+    "pages/setting/setting"
   ],
   "subPackages": [],
   "window": {
@@ -45,5 +48,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap10.json"
 }

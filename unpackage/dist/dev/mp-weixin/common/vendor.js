@@ -7667,7 +7667,7 @@ createPage(_personal.default);
 
 /***/ }),
 
-/***/ 56:
+/***/ 43:
 /*!*************************************************************************************************!*\
   !*** /Users/qifa/study/HbuilderProject/zhongxin/main.js?{"page":"pages%2FeditInfo%2FeditInfo"} ***!
   \*************************************************************************************************/
@@ -7678,8 +7678,59 @@ createPage(_personal.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _editInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/editInfo/editInfo.vue */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _editInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/editInfo/editInfo.vue */ 44));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_editInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 51:
+/*!*************************************************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/main.js?{"page":"pages%2Fdynamics%2Fdynamics"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _dynamics = _interopRequireDefault(__webpack_require__(/*! ./pages/dynamics/dynamics.vue */ 52));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_dynamics.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 59:
+/*!*********************************************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/main.js?{"page":"pages%2Fcoupon%2Fcoupon"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _coupon = _interopRequireDefault(__webpack_require__(/*! ./pages/coupon/coupon.vue */ 60));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_coupon.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 67:
+/*!***********************************************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/main.js?{"page":"pages%2Fsetting%2Fsetting"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _setting = _interopRequireDefault(__webpack_require__(/*! ./pages/setting/setting.vue */ 68));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_setting.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })

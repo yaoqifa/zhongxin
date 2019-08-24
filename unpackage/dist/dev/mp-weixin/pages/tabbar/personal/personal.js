@@ -116,6 +116,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -124,23 +131,20 @@ var _default =
       userInfo: {} };
 
   },
-  onLoad: function onLoad() {
-    this.userInfo = uni.getStorageInfoSync('userInfo') || {};
-  },
   created: function created() {
+    this.userInfo = uni.getStorageSync('userInfo') || {};
   },
   methods: {
-    getUserInfo: function getUserInfo() {var _this = this;
-      uni.getUserInfo({
-        success: function success(res) {
-          _this.userInfo = res.userInfo;
-          uni.setStorageSync('userInfo', _this.userInfo);
-        } });
-
+    getUserInfo: function getUserInfo(e) {
+      this.userInfo = e.detail.userInfo;
+      uni.setStorageSync('userInfo', this.userInfo);
     },
-    goToPage: function goToPage() {
+    goToPage: function goToPage(url) {
+      if (!url) {
+        return;
+      }
       uni.navigateTo({
-        url: '/pages/editInfo/editInfo' });
+        url: url });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
