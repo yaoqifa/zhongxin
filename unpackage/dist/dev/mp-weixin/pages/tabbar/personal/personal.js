@@ -130,11 +130,11 @@ var _default =
 {
   data: function data() {
     return {
-      title: 'Hello',
       userInfo: {} };
 
   },
-  created: function created() {
+  onshow: function onshow() {
+    console.log('personal');
     this.userInfo = uni.getStorageSync('userInfo') || {};
   },
   methods: {

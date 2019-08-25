@@ -1,1 +1,1 @@
-<view class="content">message</view>
+<view><block wx:if="{{!userInfo.nickName}}"><view class="not-login"><text>您还未登录，登录后这里将出现消息管理功能哦～</text><button class="login-btn" open-type="getUserInfo" withCredentials="true" data-event-opts="{{[['getuserinfo',[['getUserInfo',['$event']]]]]}}" bindgetuserinfo="__e">点击登录</button></view></block><block wx:else><view class="message-wrap"><text>{{title}}</text></view></block></view>

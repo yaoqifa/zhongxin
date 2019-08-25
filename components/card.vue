@@ -1,20 +1,16 @@
-<template>
-  <div class="card">
-    <image class="face" :src="info.url" mode="scaleToFill"/>
-    <div class="info">
-      <div class="top">
-        <span class="name">{{ info.name }}</span>
-        <span class="status" v-if="info.certifyStatus">已认证</span>
-        <span class="intro">{{ info.introLength }}字</span>
-      </div>
-      <div class="bottom">
-        <span class="sex">{{ info.sex }}</span>
-        <span class="address">{{ info.address }}</span>
-        <span class="age">{{ info.age }}</span>
-        <span class="school"> {{ info.school }}</span>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+	view.card
+		image.face(:src="info.url" mode="scaleToFill")
+		view.info
+			view.top
+				text.name {{ info.name }}
+				text.status(v-if="info.certifyStatus") 已认证
+				text.intro {{ info.introLength }}字
+			view.bottom
+				text.sex {{info.sex}}
+				text.address {{info.address}}
+				text.age {{info.age}}
+				text.school {{info.school}}
 </template>
 
 <script>

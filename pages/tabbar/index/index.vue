@@ -8,9 +8,12 @@
 
 <script>
 import card from '@/components/card'
-import { hasLogin } from '@/utils/index.js'
+import { hasLogin } from '@/utils/index'
 
 export default {
+  components: {
+    card
+  },
   data () {
     return {
       list: [
@@ -48,18 +51,13 @@ export default {
 				confirmText: '去授权',
 				success: (res) => {
 					if (res.confirm) {
-            setTimeout(() => {
-              uni.navigateTo({
-                url: '/pages/tabbar/personal/personal'
-              })
-            }, 1000)
+						uni.switchTab({
+							url: '/pages/tabbar/personal/personal'
+						})
 					}
 				}
 			})
     }
-  },
-  components: {
-    card
   },
 
   methods: {

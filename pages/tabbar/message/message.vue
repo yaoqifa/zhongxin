@@ -1,27 +1,35 @@
-<template>
-	<view class="content">
-		message
-	</view>
+<template lang="pug">
+	view
+		view.not-login(v-if="!userInfo.nickName")
+			text 您还未登录，登录后这里将出现消息管理功能哦～
+			button.login-btn(open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true") 点击登录
+		view.message-wrap(v-else)
+			text {{title}}
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'message',
+				userInfo: {}
 			}
 		},
-		onLoad() {
-
+		onshow() {
+			console.log('message')
+			this.userInfo = uni.getStorageSync('userInfo') || {}
 		},
 		methods: {
-
+			getUserInfo(e) {
+				this.userInfo = e.detail.userInfo
+				uni.setStorageSync('userInfo', this.userInfo)
+			},
 		}
 	}
 </script>
 
 <style>
-	.content {
+	.message-wrap {
 		text-align: center;
 		height: 400upx;
 		margin-top: 200upx;

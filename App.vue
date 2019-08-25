@@ -1,6 +1,6 @@
 <script>
 export default {
-	onLaunch: function() {
+	onLaunch() {
 		console.log('App Launch');
 
 		setTimeout(() => {
@@ -13,21 +13,19 @@ export default {
 			// });
 		}, 1000);
 	},
-	onShow: function() {
+	onShow() {
 		console.log('App Show');
 	},
-	onHide: function() {
+	onHide() {
 		console.log('App Hide');
 	},
-	onError: function(err) {
+	onError(err) {
 		console.log(err)
-		uni.share({
-			
-		})
 	}
 };
 </script>
 
 <style>
-/*每个页面公共css */ 
+/*每个页面公共css */
+  @import './styles/index.scss';
 </style>

@@ -1,0 +1,26 @@
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+.not-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40% 150rpx 0;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+.not-login .login-btn {
+  flex: 1;
+  font-size: 14px;
+  margin-top: 30rpx;
+  width: 320rpx;
+  height: 80rpx;
+  color: #fff;
+  background: #111;
+}

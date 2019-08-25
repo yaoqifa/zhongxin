@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.personal.data-v-708c209f {
+.personal-wrap.data-v-708c209f {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,7 +35,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.personal .top.data-v-708c209f {
+.personal-wrap .top.data-v-708c209f {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     padding: 20rpx 40rpx;
@@ -50,12 +50,12 @@
             align-items: center;
     border-bottom: 20rpx solid #eee;
 }
-.personal .top .avatar.data-v-708c209f {
+.personal-wrap .top .avatar.data-v-708c209f {
       width: 100rpx;
       height: 100rpx;
       border-radius: 50%;
 }
-.personal .top .name.data-v-708c209f {
+.personal-wrap .top .name.data-v-708c209f {
       color: #111;
       margin-left: 30rpx;
       -webkit-box-flex: 1;
@@ -64,7 +64,7 @@
               flex: 1;
       font-size: 16px;
 }
-.personal .top .edit.data-v-708c209f {
+.personal-wrap .top .edit.data-v-708c209f {
       -webkit-flex-basis: 120rpx;
           -ms-flex-preferred-size: 120rpx;
               flex-basis: 120rpx;
@@ -72,7 +72,7 @@
       font-size: 12px;
       color: #999;
 }
-.personal .content.data-v-708c209f {
+.personal-wrap .content.data-v-708c209f {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
@@ -88,7 +88,7 @@
             flex-direction: column;
     padding-left: 40rpx;
 }
-.personal .content .item.data-v-708c209f {
+.personal-wrap .content .item.data-v-708c209f {
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
       height: 100rpx;
@@ -104,40 +104,5 @@
           -ms-flex-align: center;
               align-items: center;
       border-bottom: 1px solid #eee;
-}
-.empty.data-v-708c209f {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 40% 150rpx 0;
-  color: #999;
-  font-size: 14px;
-  text-align: center;
-}
-.empty .login.data-v-708c209f {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    font-size: 14px;
-    margin-top: 30rpx;
-    width: 320rpx;
-    height: 80rpx;
-    color: #fff;
-    background: #111;
 }
 

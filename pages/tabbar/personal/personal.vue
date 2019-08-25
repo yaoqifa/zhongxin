@@ -1,9 +1,9 @@
 <template lang="pug">
 	view
-		view.empty(v-if="!userInfo.nickName")
-			text 您还未登录，登录后这里将出现个人信息管理以及筛选等功能
-			button.login(open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true") 点击登录
-		view.personal(v-else)
+		view.not-login(v-if="!userInfo.nickName")
+			text 您还未登录，登录后这里将出现个人信息管理哦～
+			button.login-btn(open-type="getUserInfo" @getuserinfo="getUserInfo" withCredentials="true") 点击登录
+		view.personal-wrap(v-else)
 			view.top(@click="goToPage('/pages/editInfo/editInfo')")
 				image.avatar(:src="userInfo.avatarUrl" mode="cover")
 				text.name {{userInfo.nickName}}
@@ -23,11 +23,11 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello',
 				userInfo: {}
 			}
 		},
-		created() {
+		onshow() {
+			console.log('personal')
 			this.userInfo = uni.getStorageSync('userInfo') || {}
 		},
 		methods: {
@@ -51,7 +51,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.personal {
+	.personal-wrap {
 		display: flex;
 		flex-direction: column;
 		.top {
@@ -94,25 +94,6 @@
 				align-items: center;
 				border-bottom: 1px solid #eee;
 			}
-		}
-	}
-	.empty {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40% 150rpx 0;
-		color: #999;
-		font-size: 14px;
-		text-align: center;
-		.login {
-			flex: 1;
-			font-size: 14px;
-			margin-top: 30rpx;
-			width: 320rpx;
-			height: 80rpx;
-			color: #fff;
-			background: #111;
 		}
 	}
 </style>

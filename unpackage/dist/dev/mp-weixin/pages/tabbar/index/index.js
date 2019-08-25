@@ -122,9 +122,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = __webpack_require__(/*! @/utils/index.js */ 17);var card = function card() {return __webpack_require__.e(/*! import() | components/card */ "components/card").then(__webpack_require__.bind(null, /*! @/components/card */ 76));};var _default =
+var _index = __webpack_require__(/*! @/utils/index */ 17);var card = function card() {return __webpack_require__.e(/*! import() | components/card */ "components/card").then(__webpack_require__.bind(null, /*! @/components/card */ 76));};var _default =
 
 {
+  components: {
+    card: card },
+
   data: function data() {
     return {
       list: [
@@ -162,19 +165,14 @@ var _index = __webpack_require__(/*! @/utils/index.js */ 17);var card = function
         confirmText: '去授权',
         success: function success(res) {
           if (res.confirm) {
-            setTimeout(function () {
-              uni.navigateTo({
-                url: '/pages/tabbar/personal/personal' });
+            uni.switchTab({
+              url: '/pages/tabbar/personal/personal' });
 
-            }, 1000);
           }
         } });
 
     }
   },
-  components: {
-    card: card },
-
 
   methods: {
     clickHandle: function clickHandle(ev) {
