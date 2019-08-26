@@ -15,8 +15,8 @@
 					text 我的桃花券
 				view.item.setting(@click="goToPage('/pages/setting/setting')")
 					text 设置
-				view.item
-					button(@click="clearUserInfo") 清除登陆信息
+				view.item.clear-user-info
+					button.clear-btn(@click="clearUserInfo") 清除登陆信息
 </template>
 
 <script>
@@ -42,6 +42,7 @@
 			},
 			clearUserInfo() {
 				uni.removeStorageSync('userInfo')
+				this.setUserInfo({})
 			}
 		}
 	}
@@ -90,6 +91,11 @@
 				display: flex;
 				align-items: center;
 				border-bottom: 1px solid #eee;
+			}
+			.clear-user-info {
+				.clear-btn {
+					font-size: 12px;
+				}
 			}
 		}
 	}

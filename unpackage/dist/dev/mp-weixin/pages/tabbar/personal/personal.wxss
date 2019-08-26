@@ -105,4 +105,7 @@
               align-items: center;
       border-bottom: 1px solid #eee;
 }
+.personal-wrap .content .clear-user-info .clear-btn.data-v-708c209f {
+      font-size: 12px;
+}
 

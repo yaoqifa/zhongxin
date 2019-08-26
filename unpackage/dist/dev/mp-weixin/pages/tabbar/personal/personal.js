@@ -149,6 +149,7 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _objectSpread(target) {
     },
     clearUserInfo: function clearUserInfo() {
       uni.removeStorageSync('userInfo');
+      this.setUserInfo({});
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
