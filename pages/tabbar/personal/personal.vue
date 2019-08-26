@@ -20,25 +20,16 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex'
+	import { mapState, mapMutations } from 'vuex'
 
 	export default {
-		data() {
-			return {
-				userInfo: {}
-			}
-		},
 		computed: {
-      ...mapState(['token'])
+      ...mapState(['userInfo'])
     },
-		created() {
-			console.log('personal')
-			console.log(this.token)
-			this.userInfo = uni.getStorageSync('userInfo') || {}
-		},
 		methods: {
+			...mapMutations(['setUserInfo']),
 			getUserInfo(e) {
-				this.userInfo = e.detail.userInfo
+				this.setUserInfo(e.detail.userInfo)
 				uni.setStorageSync('userInfo', this.userInfo)
 			},
 			goToPage(url) {

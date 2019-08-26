@@ -1624,17 +1624,11 @@ _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    userInfo: uni.getStorageSync('userInfo') || {},
-    token: '123jjjjjj',
-    avatarUrl: '',
-    userName: '' },
+    userInfo: uni.getStorageSync('userInfo') || {} },
 
   mutations: {
-    login: function login(state, provider) {
-      console.log(state);
-    },
-    logout: function logout(state) {
-      state.login = false;
+    setUserInfo: function setUserInfo(state, provider) {
+      state.userInfo = provider;
     } } });var _default =
 
 

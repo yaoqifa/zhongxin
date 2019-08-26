@@ -5,17 +5,11 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    userInfo: uni.getStorageSync('userInfo') || {},
-    token: '123jjjjjj',
-    avatarUrl: '',
-    userName: ''
+    userInfo: uni.getStorageSync('userInfo') || {}
   },
   mutations: {
-    login(state, provider) {
-      console.log(state)
-    },
-    logout(state) {
-      state.login = false
+    setUserInfo(state, provider) {
+      state.userInfo = provider
     }
   }
 })

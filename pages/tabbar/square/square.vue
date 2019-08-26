@@ -8,20 +8,21 @@
 </template>
 
 <script>
+	import { mapState, mapMutations } from 'vuex'
+
 	export default {
 		data() {
 			return {
-				title: 'square',
-				userInfo: {}
+				title: 'square'
 			}
 		},
-		created() {
-			console.log('square')
-			this.userInfo = uni.getStorageSync('userInfo') || {}
-		},
+		computed: {
+      ...mapState(['userInfo'])
+    },
 		methods: {
+			...mapMutations(['setUserInfo']),
 			getUserInfo(e) {
-				this.userInfo = e.detail.userInfo
+				this.setUserInfo(e.detail.userInfo)
 				uni.setStorageSync('userInfo', this.userInfo)
 			},
 		}
