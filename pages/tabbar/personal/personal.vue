@@ -20,14 +20,20 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex'
+
 	export default {
 		data() {
 			return {
 				userInfo: {}
 			}
 		},
-		onshow() {
+		computed: {
+      ...mapState(['token'])
+    },
+		created() {
 			console.log('personal')
+			console.log(this.token)
 			this.userInfo = uni.getStorageSync('userInfo') || {}
 		},
 		methods: {

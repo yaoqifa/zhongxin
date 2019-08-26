@@ -15,7 +15,7 @@
 				userInfo: {}
 			}
 		},
-		onshow() {
+		created() {
 			console.log('message')
 			this.userInfo = uni.getStorageSync('userInfo') || {}
 		},

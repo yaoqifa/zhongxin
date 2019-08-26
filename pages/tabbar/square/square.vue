@@ -15,7 +15,7 @@
 				userInfo: {}
 			}
 		},
-		onshow() {
+		created() {
 			console.log('square')
 			this.userInfo = uni.getStorageSync('userInfo') || {}
 		},
