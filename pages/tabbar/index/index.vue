@@ -1,9 +1,7 @@
-<template>
-  <div class="index page-ontainer" @click="clickHandle">
-    <div class="list">
-      <card v-for="item in list" :info="item" :key="item.id"></card>
-    </div>
-  </div>
+<template lang="pug">
+  view.index.page-container(@click="clickHandle")
+    view
+      card(v-for="item in list" :info="item" :key="item.id")
 </template>
 
 <script>
@@ -77,7 +75,7 @@ export default {
 </script>
 
 <style scoped>
-.page-ontainer {
+.page-container {
   background: #eee;
   min-height: 100%;
   overflow: scroll;
