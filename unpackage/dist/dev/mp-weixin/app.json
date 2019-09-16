@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/editInfo/editInfo",
     "pages/tabbar/index/index",
     "pages/tabbar/square/square",
     "pages/tabbar/message/message",
     "pages/tabbar/personal/personal",
-    "pages/editInfo/editInfo",
     "pages/dynamics/dynamics",
     "pages/coupon/coupon",
     "pages/setting/setting"

@@ -1,6 +1,12 @@
 {
 	"pages": [
 		{
+			"path": "pages/editInfo/editInfo",
+			"style": {
+				"navigationBarTitleText": "编辑资料"
+			}
+		},
+		{
 			"path": "pages/tabbar/index/index",
 			"style": {
 				"navigationBarTitleText": "zhongxin",
@@ -18,12 +24,6 @@
 		{
 			"path": "pages/tabbar/personal/personal",
 			"style": {}
-		},
-		{
-			"path": "pages/editInfo/editInfo",
-			"style": {
-				"navigationBarTitleText": "编辑资料"
-			}
 		},
 		{
 			"path": "pages/dynamics/dynamics",

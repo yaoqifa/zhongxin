@@ -15,29 +15,121 @@
 					view.pwr-bottom
 						image(v-if="photos[2]" :src="photos[2]" mode="cover")
 						button.photo-btn(v-else @click="addPhoto(2)") +
+
+		view.basic-info
+			view.bi-title
+				text.bit-l 基本信息
+			view.item
+				text.label 昵称
+				input.right(v-model="form.nickName" maxlength="10" placeholder="点击填写")
+			view.item
+				text.label 微信号
+				input.right(v-model="form.weixin" maxlength="20" placeholder="点击填写")
+			view.item
+				text.label 出生和星座
+				picker.right(mode="date" :value="form.curDate" :start="startDate" :end="endDate" @change="bindDateChange")
+					text {{form.curDate || '点击填写'}}
+			view.item
+				text.label 身高
+				picker.right(mode="selector" :value="heightIndex" :range="heightRange" @change="bindHeightChange")
+					text {{form.height}}cm
+			view.item
+				text.label 毕业院校
+				view.right.school-education
+					text.school(@click="goToPage('/pages/dynamics/dynamics')") {{form.school || '点击填写'}}
+					text.dot .
+					picker.education(mode="selector" :value="educationIndex" :range="educationRange" @change="bindEducationChange")
+						text {{form.education || '点击填写'}}
+			view.item
+				text.label 所在城市
+				picker.right(mode="region" :value="form.address" @change="bindAddressChange")
+					text {{form.address.join(' ') || '点击填写'}}
 </template>
 
 <script>
+	import { setArrayRange } from '@/utils/tool'
+
 	export default {
 		data() {
 			return {
 				title: 'Hello',
 				photos: ['', '' , ''],
+				form: {
+					nickName: '',
+					weixin: '',
+					mobile: '',
+					address: ["上海市", "杨浦区"],
+					curDate: this.getDate('end'),
+					height: '170',
+					school: '',
+					education: '硕士',
+				},
+				heightRange: setArrayRange(100, 230),
+				heightIndex: 70,
+				educationRange: ['高中及以下', '大专', '本科', '硕士', '博士'],
+				educationIndex: 2,
 			}
 		},
+    computed: {
+			startDate() {
+				return this.getDate('start');
+			},
+			endDate() {
+				return this.getDate('end');
+			}
+    },
 		methods: {
+			async getUserInfo() {
+				const info = await getUserInfo();
+			},
 			addPhoto(index) {
 				uni.chooseImage({
 					count: 1,
 					success: (res) => {
-						console.log(JSON.stringify(res.tempFilePaths))
 						this.photos[index] = res.tempFilePaths[0]
 					},
 					fail: (res) => {
 						console.log(res)
 					}
 				})
-			}
+			},
+			getDate(type) {
+				const date = new Date()
+				let year = date.getFullYear()
+				let month = date.getMonth() + 1
+				let day = date.getDate()
+
+				if (type === 'start') {
+						year = year - 60
+				} else if (type === 'end') {
+						year = year - 18
+				}
+				month = month > 9 ? month : '0' + month
+				day = day > 9 ? day : '0' + day
+				return `${year}-${month}-${day}`
+			},
+			bindDateChange(e) {
+				this.form.curDate = e.target.value
+			},
+			bindHeightChange(e) {
+				this.heightIndex = e.target.value
+				this.form.height = this.heightRange[this.heightIndex]
+			},
+			bindAddressChange(e) {
+				this.form.address = e.target.value
+			},
+			bindEducationChange(e) {
+				this.educationIndex = e.target.value
+				this.form.education = this.educationRange[this.educationIndex]
+			},
+			goToPage(url) {
+				if (!url) {
+					return
+				}
+				uni.navigateTo({
+					url
+				})
+			},
 		}
 	}
 </script>
@@ -67,7 +159,7 @@
 				.pw-left {
 					flex: 3;
 					margin-right: 10rpx;
-					border: 0.5px solid #ccc;
+					border: 1px solid #ccc;
 					display: flex;
 					align-items: center;
 				}
@@ -79,7 +171,7 @@
 					.pwr-top, .pwr-bottom {
 						flex: 1;
 						width: 100%;
-						border: 0.5px solid #ccc;
+						border: 1px solid #ccc;
 					}
 					.pwr-top {
 						margin-bottom: 4rpx;
@@ -94,6 +186,41 @@
 				}
 				.photo-btn::after {
 					border: 0;
+				}
+			}
+		}
+		.basic-info {
+			margin-top: 50rpx;
+			.bi-title {
+				font-size: 16px;
+				font-weight: bold;
+				color: #333;
+			}
+			.item {
+				display: flex;
+				align-items: center;
+				height: 80rpx;
+				font-size: 12px;
+				margin-bottom: 20rpx;
+				.label {
+					flex-basis: 140rpx;
+					font-size: 13px;
+				}
+				.right {
+					flex: 1;
+					text-align: right;
+					color: #999;
+				}
+				.school-education {
+					display: flex;
+					.school {
+						flex: 1;
+					}
+					.dot {
+						flex-basis: 10rpx;
+						margin: 0 10rpx;
+						line-height: 12px;
+					}
 				}
 			}
 		}
