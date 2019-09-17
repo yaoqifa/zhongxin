@@ -1,1 +1,0 @@
-<view data-event-opts="{{[['tap',[['clickHandle',['$event']]]]]}}" class="index page-container data-v-64c507c5" bindtap="__e"><view class="data-v-64c507c5"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><card vue-id="{{'1-'+__i0__}}" info="{{item}}" class="data-v-64c507c5" bind:__l="__l"></card></block></view></view>
