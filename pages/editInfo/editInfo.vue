@@ -36,7 +36,7 @@
 			view.item
 				text.label 毕业院校
 				view.right.school-education
-					text.school(@click="goToPage('/pages/dynamics/dynamics')") {{form.school || '点击填写'}}
+					text.school(@click="goToPage('/pages/editInfo/setSchool')") {{form.school || '点击填写'}}
 					text.dot .
 					picker.education(mode="selector" :value="educationIndex" :range="educationRange" @change="bindEducationChange")
 						text {{form.education || '点击填写'}}
