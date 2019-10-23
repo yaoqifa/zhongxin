@@ -15,6 +15,16 @@
 					view.pwr-bottom
 						image(v-if="photos[2]" :src="photos[2]" mode="cover")
 						button.photo-btn(v-else @click="addPhoto(2)") +
+		// 关于我
+		view.about-me
+			view.title 关于我
+			view.my-tag-entry(
+				v-for="(item, index) in tagEntryList"
+				:key="index"
+				@click="goChooseTagsPage(item.value)"
+			)
+				view.tag-name {{ item.label }}
+				view.arrow >
 </template>
 
 <script>
@@ -23,6 +33,12 @@
 			return {
 				title: 'Hello',
 				photos: ['', '' , ''],
+				tagEntryList: [
+					{ value: 4, label: '性格' },
+					{ value: 1, label: '兴趣爱好' },
+					{ value: 3, label: '食物' },
+					{ value: 2, label: '旅行' },
+				],
 			}
 		},
 		methods: {
@@ -37,7 +53,12 @@
 						console.log(res)
 					}
 				})
-			}
+			},
+			goChooseTagsPage(type) {
+				uni.navigateTo({
+						url: `/pages/tags/tags?type=${type}`
+				})
+			},
 		}
 	}
 </script>
@@ -96,6 +117,21 @@
 					border: 0;
 				}
 			}
+		}
+		.about-me {
+			padding: 35rpx 0;
+		}
+		.title {
+			color: #000;
+			font-size: 14px;
+			font-weight: 700;
+		}
+		.my-tag-entry {
+			display: flex;
+			justify-content: space-between;
+			font-size: 12px;
+			padding: 10rpx 0;
+			color: #ccc;
 		}
 	}
 </style>

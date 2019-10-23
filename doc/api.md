@@ -13,7 +13,7 @@
 		country		String
 		province	String
 		city		String
-		country 	String
+		country 	String.
 		town		String
 	picUrls 	String[]
 	tags		Object

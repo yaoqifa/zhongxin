@@ -1,1 +1,3 @@
 export const SET_TEST_INFO = 'SET_TEST_INFO';
+export const CHANGE_TAGS = 'CHANGE_TAGS';
+export const CHANGE_SELECTED_TAGS = 'CHANGE_SELECTED_TAGS';

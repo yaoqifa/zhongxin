@@ -43,7 +43,13 @@
 				"navigationBarTitleText": "设置"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/tags/tags",
+            "style" : {
+				"navigationBarTitleText": ""
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
