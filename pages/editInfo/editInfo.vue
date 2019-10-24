@@ -27,8 +27,12 @@
 				input.right(v-model="form.weixin" maxlength="20" placeholder="点击填写")
 			view.item
 				text.label 出生和星座
-				picker.right(mode="date" :value="form.curDate" :start="startDate" :end="endDate" @change="bindDateChange")
-					text {{form.curDate || '点击填写'}}
+				view.right.date-constellation
+					picker.date(mode="date" :value="form.curDate" :start="startDate" :end="endDate" @change="bindDateChange")
+						text {{form.curDate || '点击填写'}}
+					text.dot .
+					picker.constellation(mode="selector" :value="constellationIndex" :range="constellationRange" @change="bindConstellationChange")
+						text {{form.constellation || '点击填写'}}
 			view.item
 				text.label 身高
 				picker.right(mode="selector" :value="heightIndex" :range="heightRange" @change="bindHeightChange")
@@ -36,7 +40,7 @@
 			view.item
 				text.label 毕业院校
 				view.right.school-education
-					text.school(@click="goToPage('/pages/editInfo/setSchool')") {{form.school || '点击填写'}}
+					input.school(v-model="form.school" maxlength="20" placeholder="请输入学校")
 					text.dot .
 					picker.education(mode="selector" :value="educationIndex" :range="educationRange" @change="bindEducationChange")
 						text {{form.education || '点击填写'}}
@@ -63,9 +67,12 @@
 					height: '170',
 					school: '',
 					education: '硕士',
+					constellation: '白羊座'
 				},
 				heightRange: setArrayRange(100, 230),
 				heightIndex: 70,
+				constellationIndex: 0,
+				constellationRange: ['白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座', '摩羯座', '水瓶座', '双鱼座'],
 				educationRange: ['高中及以下', '大专', '本科', '硕士', '博士'],
 				educationIndex: 2,
 			}
@@ -121,6 +128,10 @@
 			bindEducationChange(e) {
 				this.educationIndex = e.target.value
 				this.form.education = this.educationRange[this.educationIndex]
+			},
+			bindConstellationChange(e) {
+				this.constellationIndex = e.target.value
+				this.form.constellation = this.constellationRange[this.constellationIndex]
 			},
 			goToPage(url) {
 				if (!url) {
@@ -211,16 +222,27 @@
 					text-align: right;
 					color: #999;
 				}
+				.date-constellation {
+					display: flex;
+					line-height: 30rpx;
+					.date {
+						flex: 1;
+					}
+					.constellation {
+						flex-basis: 100rpx;
+					}
+				}
 				.school-education {
 					display: flex;
+					align-items: center;
 					.school {
 						flex: 1;
 					}
-					.dot {
-						flex-basis: 10rpx;
-						margin: 0 10rpx;
-						line-height: 12px;
-					}
+				}
+				.dot {
+					flex-basis: 10rpx;
+					margin: 0 20rpx;
+					line-height: 12px;
 				}
 			}
 		}
