@@ -48,6 +48,19 @@
 				text.label 所在城市
 				picker.right(mode="region" :value="form.address" @change="bindAddressChange")
 					text {{form.address.join(' ') || '点击填写'}}
+
+
+
+		// 关于我
+		view.about-me
+			view.title 关于我
+			view.my-tag-entry(
+				v-for="(item, index) in tagEntryList"
+				:key="index"
+				@click="goChooseTagsPage(item.value)"
+			)
+				view.tag-name {{ item.label }}
+				view.arrow >
 </template>
 
 <script>
@@ -75,6 +88,12 @@
 				constellationRange: ['白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座', '摩羯座', '水瓶座', '双鱼座'],
 				educationRange: ['高中及以下', '大专', '本科', '硕士', '博士'],
 				educationIndex: 2,
+				tagEntryList: [
+					{ value: 4, label: '性格' },
+					{ value: 1, label: '兴趣爱好' },
+					{ value: 3, label: '食物' },
+					{ value: 2, label: '旅行' },
+				],
 			}
 		},
     computed: {
@@ -139,6 +158,11 @@
 				}
 				uni.navigateTo({
 					url
+				})
+			},
+			goChooseTagsPage(type) {
+				uni.navigateTo({
+						url: `/pages/tags/tags?type=${type}`
 				})
 			},
 		}
@@ -246,5 +270,21 @@
 				}
 			}
 		}
+		.about-me {
+			padding: 35rpx 0;
+		}
+		.title {
+			color: #000;
+			font-size: 14px;
+			font-weight: 700;
+		}
+		.my-tag-entry {
+			display: flex;
+			justify-content: space-between;
+			font-size: 12px;
+			padding: 10rpx 0;
+			color: #ccc;
+		}
 	}
 </style>
+
