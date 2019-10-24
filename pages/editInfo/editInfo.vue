@@ -31,8 +31,7 @@
 					picker.date(mode="date" :value="form.curDate" :start="startDate" :end="endDate" @change="bindDateChange")
 						text {{form.curDate || '点击填写'}}
 					text.dot .
-					picker.constellation(mode="selector" :value="constellationIndex" :range="constellationRange" @change="bindConstellationChange")
-						text {{form.constellation || '点击填写'}}
+					text.constellation {{form.constellation}}
 			view.item
 				text.label 身高
 				picker.right(mode="selector" :value="heightIndex" :range="heightRange" @change="bindHeightChange")
@@ -49,44 +48,40 @@
 				picker.right(mode="region" :value="form.address" @change="bindAddressChange")
 					text {{form.address.join(' ') || '点击填写'}}
 
-
-
 		// 关于我
 		view.about-me
-			view.title 关于我
-			view.my-tag-entry(
+			view.bi-title 关于我
+			view.item(
 				v-for="(item, index) in tagEntryList"
 				:key="index"
 				@click="goChooseTagsPage(item.value)"
 			)
-				view.tag-name {{ item.label }}
+				view.label {{ item.label }}
 				view.arrow >
 </template>
 
 <script>
-	import { setArrayRange } from '@/utils/tool'
+	import { setDate } from '@/utils/date'
+	import { constellationRange, educationRange, heightRange } from '@/constant'
 
 	export default {
 		data() {
 			return {
-				title: 'Hello',
 				photos: ['', '' , ''],
 				form: {
 					nickName: '',
 					weixin: '',
 					mobile: '',
 					address: ["上海市", "杨浦区"],
-					curDate: this.getDate('end'),
+					curDate: setDate('end'),
 					height: '170',
 					school: '',
 					education: '硕士',
 					constellation: '白羊座'
 				},
-				heightRange: setArrayRange(100, 230),
+				heightRange,
 				heightIndex: 70,
-				constellationIndex: 0,
-				constellationRange: ['白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座', '摩羯座', '水瓶座', '双鱼座'],
-				educationRange: ['高中及以下', '大专', '本科', '硕士', '博士'],
+				educationRange,
 				educationIndex: 2,
 				tagEntryList: [
 					{ value: 4, label: '性格' },
@@ -96,17 +91,20 @@
 				],
 			}
 		},
+		created() {
+			this.setConstellation(this.form.curDate)
+		},
     computed: {
 			startDate() {
-				return this.getDate('start');
+				return setDate('start')
 			},
 			endDate() {
-				return this.getDate('end');
+				return setDate('end')
 			}
     },
 		methods: {
 			async getUserInfo() {
-				const info = await getUserInfo();
+				const info = await getUserInfo()
 			},
 			addPhoto(index) {
 				uni.chooseImage({
@@ -119,23 +117,9 @@
 					}
 				})
 			},
-			getDate(type) {
-				const date = new Date()
-				let year = date.getFullYear()
-				let month = date.getMonth() + 1
-				let day = date.getDate()
-
-				if (type === 'start') {
-						year = year - 60
-				} else if (type === 'end') {
-						year = year - 18
-				}
-				month = month > 9 ? month : '0' + month
-				day = day > 9 ? day : '0' + day
-				return `${year}-${month}-${day}`
-			},
 			bindDateChange(e) {
 				this.form.curDate = e.target.value
+				this.setConstellation(this.form.curDate)
 			},
 			bindHeightChange(e) {
 				this.heightIndex = e.target.value
@@ -147,10 +131,6 @@
 			bindEducationChange(e) {
 				this.educationIndex = e.target.value
 				this.form.education = this.educationRange[this.educationIndex]
-			},
-			bindConstellationChange(e) {
-				this.constellationIndex = e.target.value
-				this.form.constellation = this.constellationRange[this.constellationIndex]
 			},
 			goToPage(url) {
 				if (!url) {
@@ -165,6 +145,17 @@
 						url: `/pages/tags/tags?type=${type}`
 				})
 			},
+			// 每次选择时间，自动获取星座
+			setConstellation(date) {
+				date = date.substr(5)
+				for (let i = 0; i < constellationRange.length; i++) {
+					const { range, name } = constellationRange[i]
+					if ((date >= range[0] && date <= range[1]) || (date >= range[1] && date <= range[0])) {
+						this.form.constellation = name
+						break
+					}
+				}
+			}
 		}
 	}
 </script>
@@ -224,13 +215,13 @@
 				}
 			}
 		}
-		.basic-info {
+		.bi-title {
+			font-size: 16px;
+			font-weight: bold;
+			color: #333;
+		}
+		.basic-info, .about-me {
 			margin-top: 50rpx;
-			.bi-title {
-				font-size: 16px;
-				font-weight: bold;
-				color: #333;
-			}
 			.item {
 				display: flex;
 				align-items: center;
@@ -252,9 +243,6 @@
 					.date {
 						flex: 1;
 					}
-					.constellation {
-						flex-basis: 100rpx;
-					}
 				}
 				.school-education {
 					display: flex;
@@ -265,25 +253,31 @@
 				}
 				.dot {
 					flex-basis: 10rpx;
-					margin: 0 20rpx;
+					margin: 0 10rpx;
 					line-height: 12px;
 				}
 			}
 		}
+
 		.about-me {
-			padding: 35rpx 0;
-		}
-		.title {
-			color: #000;
-			font-size: 14px;
-			font-weight: 700;
-		}
-		.my-tag-entry {
-			display: flex;
-			justify-content: space-between;
-			font-size: 12px;
-			padding: 10rpx 0;
-			color: #ccc;
+			margin-top: 50rpx;
+			.item {
+				display: flex;
+				align-items: center;
+				height: 80rpx;
+				font-size: 12px;
+				margin-bottom: 20rpx;
+				color: #666;
+				.label {
+					flex: 1;
+					font-size: 13px;
+				}
+				.arrow {
+					flex-basis: 100rpx;
+					text-align: right;
+					color: #999;
+				}
+			}
 		}
 	}
 </style>

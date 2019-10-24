@@ -1604,6 +1604,103 @@ var characterTags = [
 
 /***/ }),
 
+/***/ 132:
+/*!********************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 28);
+
+var constellationRange = [
+{
+  range: ['03-21', '04-19'],
+  name: '白羊座' },
+
+{
+  range: ['04-20', '05-20'],
+  name: '金牛座' },
+
+{
+  range: ['05-21', '06-21'],
+  name: '双子座' },
+
+{
+  range: ['06-22', '07-22'],
+  name: '巨蟹座' },
+
+{
+  range: ['07-23', '08-22'],
+  name: '狮子座' },
+
+{
+  range: ['08-23', '09-22'],
+  name: '处女座' },
+
+{
+  range: ['09-23', '10-23'],
+  name: '天秤座' },
+
+{
+  range: ['10-24', '11-22'],
+  name: '天蝎座' },
+
+{
+  range: ['11-23', '12-21'],
+  name: '射手座' },
+
+{
+  range: ['12-22', '01-19'],
+  name: '摩羯座' },
+
+{
+  range: ['01-20', '02-18'],
+  name: '水瓶座' },
+
+{
+  range: ['02-19', '03-20'],
+  name: '双鱼座' }];exports.constellationRange = constellationRange;
+
+
+
+var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
+
+var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
+
+/***/ }),
+
+/***/ 133:
+/*!****************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
+                                                                                                      *  设置日期
+                                                                                                      * @param {*} type 日期年的范围
+                                                                                                      */
+var setDate = function setDate(type) {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  if (type === 'start') {
+    year = year - 60;
+  } else if (type === 'end') {
+    year = year - 18;
+  }
+  month = month > 9 ? month : '0' + month;
+  day = day > 9 ? day : '0' + day;
+  return "".concat(year, "-").concat(month, "-").concat(day);
+};exports.setDate = setDate;
+
+/***/ }),
+
 /***/ 14:
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
