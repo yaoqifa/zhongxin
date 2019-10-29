@@ -50,7 +50,7 @@
 
 		// 关于我
 		view.about-me
-			view.bi-title 关于我
+			view.ei-title 关于我
 			view.item(
 				v-for="(item, index) in tagEntryList"
 				:key="index"
@@ -58,6 +58,18 @@
 			)
 				view.label {{ item.label }}
 				view.arrow >
+
+		// 个人介绍
+		view.introduce
+			view.ei-title 个人介绍
+			textarea.textarea(
+				@input="textAreaInput"
+				maxlength="-1"
+				:placeholder="introducePlaceholder"
+			)
+			text.count {{count}} / 1000
+
+		button.confirm(@click="confirm") 提交
 </template>
 
 <script>
@@ -68,6 +80,7 @@
 		data() {
 			return {
 				photos: ['', '' , ''],
+				count: 0,
 				form: {
 					nickName: '',
 					weixin: '',
@@ -89,6 +102,8 @@
 					{ value: 3, label: '食物' },
 					{ value: 2, label: '旅行' },
 				],
+				introducePlaceholder: `建议设计但不限于以下内容: 家乡和长居城市、简单的求学or工作经历，性格特点、兴趣爱好、特殊技能，对另一半的期待。
+				据说写的详细走心的小伙伴都脱单了哦～`
 			}
 		},
 		created() {
@@ -155,6 +170,13 @@
 						break
 					}
 				}
+			},
+			textAreaInput(e) {
+				const value = e.detail.value
+				this.count = value.length
+			},
+			confirm() {
+				console.log(this.form)
 			}
 		}
 	}
@@ -215,7 +237,7 @@
 				}
 			}
 		}
-		.bi-title {
+		.ei-title {
 			font-size: 16px;
 			font-weight: bold;
 			color: #333;
@@ -267,7 +289,7 @@
 				height: 80rpx;
 				font-size: 12px;
 				margin-bottom: 20rpx;
-				color: #666;
+				color: #333;
 				.label {
 					flex: 1;
 					font-size: 13px;
@@ -278,6 +300,40 @@
 					color: #999;
 				}
 			}
+		}
+
+		.introduce {
+			margin: 50rpx 0 40rpx 0;
+			position: relative;
+			.textarea {
+				box-sizing: border-box;
+				width: 100%;
+				padding: 20rpx 20rpx 50rpx;
+				margin-top: 40rpx;
+				font-size: 13px;
+				color: #333;
+				height: 320rpx;
+				border: 1px solid #ccc;
+			}
+			.textarea-placeholder {
+				color: #999;
+			}
+			.count {
+				color: #999;
+				font-size: 12px;
+				position: absolute;
+				right: 20rpx;
+				bottom: 10rpx;
+			}
+		}
+
+		.confirm {
+			width: 100%;
+			line-height: 80rpx;
+			text-align: center;
+			font-size: 16px;
+			color: #fff;
+			background-color: #343434;
 		}
 	}
 </style>

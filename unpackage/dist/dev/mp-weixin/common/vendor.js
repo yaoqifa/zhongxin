@@ -1498,10 +1498,10 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 102:
-/*!**********************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/pages/tags/const.js ***!
-  \**********************************************************************/
+/***/ 104:
+/*!*******************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/tags.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1601,103 +1601,6 @@ var characterTags = [
 { value: 0, label: '王者荣耀' },
 { value: 1, label: '爱做饭' },
 { value: 2, label: '二次元' }];exports.characterTags = characterTags;
-
-/***/ }),
-
-/***/ 132:
-/*!********************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 28);
-
-var constellationRange = [
-{
-  range: ['03-21', '04-19'],
-  name: '白羊座' },
-
-{
-  range: ['04-20', '05-20'],
-  name: '金牛座' },
-
-{
-  range: ['05-21', '06-21'],
-  name: '双子座' },
-
-{
-  range: ['06-22', '07-22'],
-  name: '巨蟹座' },
-
-{
-  range: ['07-23', '08-22'],
-  name: '狮子座' },
-
-{
-  range: ['08-23', '09-22'],
-  name: '处女座' },
-
-{
-  range: ['09-23', '10-23'],
-  name: '天秤座' },
-
-{
-  range: ['10-24', '11-22'],
-  name: '天蝎座' },
-
-{
-  range: ['11-23', '12-21'],
-  name: '射手座' },
-
-{
-  range: ['12-22', '01-19'],
-  name: '摩羯座' },
-
-{
-  range: ['01-20', '02-18'],
-  name: '水瓶座' },
-
-{
-  range: ['02-19', '03-20'],
-  name: '双鱼座' }];exports.constellationRange = constellationRange;
-
-
-
-var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
-
-var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
-
-/***/ }),
-
-/***/ 133:
-/*!****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
-                                                                                                      *  设置日期
-                                                                                                      * @param {*} type 日期年的范围
-                                                                                                      */
-var setDate = function setDate(type) {
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-
-  if (type === 'start') {
-    year = year - 60;
-  } else if (type === 'end') {
-    year = year - 18;
-  }
-  month = month > 9 ? month : '0' + month;
-  day = day > 9 ? day : '0' + day;
-  return "".concat(year, "-").concat(month, "-").concat(day);
-};exports.setDate = setDate;
 
 /***/ }),
 
@@ -9642,26 +9545,98 @@ if (hadRuntime) {
 
 /***/ 28:
 /*!****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/tool.js ***!
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.setArrayRange = void 0; /**
-                                                                                                            *  设置返回一个数组区间，比如 setArrayRange(1,4)返回['1','2','3','4'],
-                                                                                                            *  setArrayRange(1990,1993, '年')返回['1990年','1991年','1992年','1993年']
-                                                                                                            * @param {*} start 数字开始
-                                                                                                            * @param {*} end  数字结尾
-                                                                                                            * @param {*} unit 单位
-                                                                                                            */
-var setArrayRange = function setArrayRange(start, end, unit) {
-  var arr = [];
-  for (var i = start; i <= end; i++) {
-    arr.push(i + (unit || ''));
+Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
+                                                                                                      *  设置日期
+                                                                                                      * @param {*} type 日期年的范围
+                                                                                                      */
+var setDate = function setDate(type) {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  if (type === 'start') {
+    year = year - 60;
+  } else if (type === 'end') {
+    year = year - 18;
   }
-  return arr;
-};exports.setArrayRange = setArrayRange;
+  month = month > 9 ? month : '0' + month;
+  day = day > 9 ? day : '0' + day;
+  return "".concat(year, "-").concat(month, "-").concat(day);
+};exports.setDate = setDate;
+
+/***/ }),
+
+/***/ 29:
+/*!********************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 30);
+
+var constellationRange = [
+{
+  range: ['03-21', '04-19'],
+  name: '白羊座' },
+
+{
+  range: ['04-20', '05-20'],
+  name: '金牛座' },
+
+{
+  range: ['05-21', '06-21'],
+  name: '双子座' },
+
+{
+  range: ['06-22', '07-22'],
+  name: '巨蟹座' },
+
+{
+  range: ['07-23', '08-22'],
+  name: '狮子座' },
+
+{
+  range: ['08-23', '09-22'],
+  name: '处女座' },
+
+{
+  range: ['09-23', '10-23'],
+  name: '天秤座' },
+
+{
+  range: ['10-24', '11-22'],
+  name: '天蝎座' },
+
+{
+  range: ['11-23', '12-21'],
+  name: '射手座' },
+
+{
+  range: ['12-22', '01-19'],
+  name: '摩羯座' },
+
+{
+  range: ['01-20', '02-18'],
+  name: '水瓶座' },
+
+{
+  range: ['02-19', '03-20'],
+  name: '双鱼座' }];exports.constellationRange = constellationRange;
+
+
+
+var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
+
+var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
 
 /***/ }),
 
@@ -9696,7 +9671,32 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 37:
+/***/ 30:
+/*!****************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/tool.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.setArrayRange = void 0; /**
+                                                                                                            *  设置返回一个数组区间，比如 setArrayRange(1,4)返回['1','2','3','4'],
+                                                                                                            *  setArrayRange(1990,1993, '年')返回['1990年','1991年','1992年','1993年']
+                                                                                                            * @param {*} start 数字开始
+                                                                                                            * @param {*} end  数字结尾
+                                                                                                            * @param {*} unit 单位
+                                                                                                            */
+var setArrayRange = function setArrayRange(start, end, unit) {
+  var arr = [];
+  for (var i = start; i <= end; i++) {
+    arr.push(i + (unit || ''));
+  }
+  return arr;
+};exports.setArrayRange = setArrayRange;
+
+/***/ }),
+
+/***/ 39:
 /*!*****************************************************************!*\
   !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/index.js ***!
   \*****************************************************************/
