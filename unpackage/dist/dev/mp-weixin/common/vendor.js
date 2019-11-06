@@ -1177,6 +1177,8 @@ function parseBaseApp(vm, _ref3)
 
 
       this.$vm.$scope = this;
+      // vm 上也挂载 globalData
+      this.$vm.globalData = this.globalData;
 
       this.$vm._isMounted = true;
       this.$vm.__call_hook('mounted', args);
@@ -1498,10 +1500,10 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 102:
-/*!**********************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/pages/tags/const.js ***!
-  \**********************************************************************/
+/***/ 104:
+/*!*******************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/pages/tags/const.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1601,103 +1603,6 @@ var characterTags = [
 { value: 0, label: '王者荣耀' },
 { value: 1, label: '爱做饭' },
 { value: 2, label: '二次元' }];exports.characterTags = characterTags;
-
-/***/ }),
-
-/***/ 132:
-/*!********************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 28);
-
-var constellationRange = [
-{
-  range: ['03-21', '04-19'],
-  name: '白羊座' },
-
-{
-  range: ['04-20', '05-20'],
-  name: '金牛座' },
-
-{
-  range: ['05-21', '06-21'],
-  name: '双子座' },
-
-{
-  range: ['06-22', '07-22'],
-  name: '巨蟹座' },
-
-{
-  range: ['07-23', '08-22'],
-  name: '狮子座' },
-
-{
-  range: ['08-23', '09-22'],
-  name: '处女座' },
-
-{
-  range: ['09-23', '10-23'],
-  name: '天秤座' },
-
-{
-  range: ['10-24', '11-22'],
-  name: '天蝎座' },
-
-{
-  range: ['11-23', '12-21'],
-  name: '射手座' },
-
-{
-  range: ['12-22', '01-19'],
-  name: '摩羯座' },
-
-{
-  range: ['01-20', '02-18'],
-  name: '水瓶座' },
-
-{
-  range: ['02-19', '03-20'],
-  name: '双鱼座' }];exports.constellationRange = constellationRange;
-
-
-
-var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
-
-var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
-
-/***/ }),
-
-/***/ 133:
-/*!****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
-                                                                                                      *  设置日期
-                                                                                                      * @param {*} type 日期年的范围
-                                                                                                      */
-var setDate = function setDate(type) {
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-
-  if (type === 'start') {
-    year = year - 60;
-  } else if (type === 'end') {
-    year = year - 18;
-  }
-  month = month > 9 ? month : '0' + month;
-  day = day > 9 ? day : '0' + day;
-  return "".concat(year, "-").concat(month, "-").concat(day);
-};exports.setDate = setDate;
 
 /***/ }),
 
@@ -1809,9 +1714,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 15:
-/*!*****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/store/index.js ***!
-  \*****************************************************************/
+/*!**************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/store/index.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2838,9 +2743,9 @@ var index_esm = {
 /***/ }),
 
 /***/ 17:
-/*!************************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/store/modules/test.js ***!
-  \************************************************************************/
+/*!*********************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/store/modules/test.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2872,9 +2777,9 @@ var actions = {
 /***/ }),
 
 /***/ 18:
-/*!**********************************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/store/modules/mutation-types.js ***!
-  \**********************************************************************************/
+/*!*******************************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/store/modules/mutation-types.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9641,27 +9546,99 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 28:
-/*!****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/tool.js ***!
-  \****************************************************************/
+/*!*************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/utils/date.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.setArrayRange = void 0; /**
-                                                                                                            *  设置返回一个数组区间，比如 setArrayRange(1,4)返回['1','2','3','4'],
-                                                                                                            *  setArrayRange(1990,1993, '年')返回['1990年','1991年','1992年','1993年']
-                                                                                                            * @param {*} start 数字开始
-                                                                                                            * @param {*} end  数字结尾
-                                                                                                            * @param {*} unit 单位
-                                                                                                            */
-var setArrayRange = function setArrayRange(start, end, unit) {
-  var arr = [];
-  for (var i = start; i <= end; i++) {
-    arr.push(i + (unit || ''));
+Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
+                                                                                                      *  设置日期
+                                                                                                      * @param {*} type 日期年的范围
+                                                                                                      */
+var setDate = function setDate(type) {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  if (type === 'start') {
+    year = year - 60;
+  } else if (type === 'end') {
+    year = year - 18;
   }
-  return arr;
-};exports.setArrayRange = setArrayRange;
+  month = month > 9 ? month : '0' + month;
+  day = day > 9 ? day : '0' + day;
+  return "".concat(year, "-").concat(month, "-").concat(day);
+};exports.setDate = setDate;
+
+/***/ }),
+
+/***/ 29:
+/*!*****************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/constant/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 30);
+
+var constellationRange = [
+{
+  range: ['03-21', '04-19'],
+  name: '白羊座' },
+
+{
+  range: ['04-20', '05-20'],
+  name: '金牛座' },
+
+{
+  range: ['05-21', '06-21'],
+  name: '双子座' },
+
+{
+  range: ['06-22', '07-22'],
+  name: '巨蟹座' },
+
+{
+  range: ['07-23', '08-22'],
+  name: '狮子座' },
+
+{
+  range: ['08-23', '09-22'],
+  name: '处女座' },
+
+{
+  range: ['09-23', '10-23'],
+  name: '天秤座' },
+
+{
+  range: ['10-24', '11-22'],
+  name: '天蝎座' },
+
+{
+  range: ['11-23', '12-21'],
+  name: '射手座' },
+
+{
+  range: ['12-22', '01-19'],
+  name: '摩羯座' },
+
+{
+  range: ['01-20', '02-18'],
+  name: '水瓶座' },
+
+{
+  range: ['02-19', '03-20'],
+  name: '双鱼座' }];exports.constellationRange = constellationRange;
+
+
+
+var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
+
+var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
 
 /***/ }),
 
@@ -9696,10 +9673,35 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 37:
-/*!*****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/index.js ***!
-  \*****************************************************************/
+/***/ 30:
+/*!*************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/utils/tool.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.setArrayRange = void 0; /**
+                                                                                                            *  设置返回一个数组区间，比如 setArrayRange(1,4)返回['1','2','3','4'],
+                                                                                                            *  setArrayRange(1990,1993, '年')返回['1990年','1991年','1992年','1993年']
+                                                                                                            * @param {*} start 数字开始
+                                                                                                            * @param {*} end  数字结尾
+                                                                                                            * @param {*} unit 单位
+                                                                                                            */
+var setArrayRange = function setArrayRange(start, end, unit) {
+  var arr = [];
+  for (var i = start; i <= end; i++) {
+    arr.push(i + (unit || ''));
+  }
+  return arr;
+};exports.setArrayRange = setArrayRange;
+
+/***/ }),
+
+/***/ 39:
+/*!**************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/utils/index.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9718,9 +9720,9 @@ var hasGuid = function hasGuid() {
 /***/ }),
 
 /***/ 4:
-/*!*************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/pages.json ***!
-  \*************************************************************/
+/*!**********************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/pages.json ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10623,26 +10625,26 @@ main();
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, files, gitHead, homepage, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-23620191019001","_inBundle":false,"_integrity":"sha512-gBpkjEOQ/LhTnXBVi266PoTNT5VJtbYoEVy+gZ8/LN9/jKEWeWndd2Lu7vn7hmUySVM5K5UV/Bd5LEVkgXB8mA==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-23620191019001.tgz","_shasum":"5c006b903ae7bc407c8b1786de249ffbf72da996","_spec":"@dcloudio/uni-stat@next","_where":"/Users/fxy/Documents/DCloud/HbuilderX-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"bc995d4b43b68e7fe7914ae6b2112117d36e63a8","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-23620191019001"};
+module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-23720191024001","_inBundle":false,"_integrity":"sha512-vJEk493Vdb8KueNzR2otzDi23rfyRcQBo/t1R41MwNGPk+AUB94gh10+HVLo98DRcvMzkuVofz3KXTAfEx24iw==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-23720191024001.tgz","_shasum":"18272814446a9bc6053bc92666ec7064a1767588","_spec":"@dcloudio/uni-stat@next","_where":"/Users/fxy/Documents/DCloud/HbuilderX-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"a725c04ef762e5df78a9a69d140c2666e0de05fc","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-23720191024001"};
 
 /***/ }),
 
 /***/ 7:
-/*!******************************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/pages.json?{"type":"style"} ***!
-  \******************************************************************************/
+/*!***************************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/pages.json?{"type":"style"} ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/editInfo/editInfo": { "navigationBarTitleText": "编辑资料" }, "pages/tabbar/index/index": { "navigationBarTitleText": "zhongxin", "enablePullDownRefresh": true }, "pages/tabbar/square/square": {}, "pages/tabbar/message/message": {}, "pages/tabbar/personal/personal": {}, "pages/dynamics/dynamics": { "navigationBarTitleText": "我的动态" }, "pages/coupon/coupon": { "navigationBarTitleText": "桃花券" }, "pages/setting/setting": { "navigationBarTitleText": "设置" }, "pages/editInfo/setSchool": { "navigationBarTitleText": "" }, "pages/tags/tags": { "navigationBarTitleText": "" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#fff", "backgroundColor": "#fff" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/editInfo/editInfo": { "navigationBarTitleText": "编辑资料", "usingComponents": {} }, "pages/tabbar/index/index": { "navigationBarTitleText": "zhongxin", "enablePullDownRefresh": true, "usingComponents": { "card": "/components/card" } }, "pages/tabbar/square/square": { "usingComponents": {} }, "pages/tabbar/message/message": { "usingComponents": {} }, "pages/tabbar/personal/personal": { "usingComponents": {} }, "pages/dynamics/dynamics": { "navigationBarTitleText": "我的动态", "usingComponents": {} }, "pages/coupon/coupon": { "navigationBarTitleText": "桃花券", "usingComponents": {} }, "pages/setting/setting": { "navigationBarTitleText": "设置", "usingComponents": {} }, "pages/editInfo/setSchool": { "navigationBarTitleText": "", "usingComponents": {} }, "pages/tags/tags": { "navigationBarTitleText": "", "usingComponents": { "tag": "/pages/tags/tag" } } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#fff", "backgroundColor": "#fff" } };exports.default = _default;
 
 /***/ }),
 
 /***/ 8:
-/*!*****************************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/pages.json?{"type":"stat"} ***!
-  \*****************************************************************************/
+/*!**************************************************************************!*\
+  !*** /Users/hellobike07499/work/prj/zhongxin/pages.json?{"type":"stat"} ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -1,11 +1,6 @@
 {
 	"pages": [
-		{
-			"path": "pages/editInfo/editInfo",
-			"style": {
-				"navigationBarTitleText": "编辑资料"
-			}
-		},
+		
 		{
 			"path": "pages/tabbar/index/index",
 			"style": {
@@ -13,6 +8,12 @@
 				"enablePullDownRefresh": true
 			}
 		},
+    {
+    	"path": "pages/editInfo/editInfo",
+    	"style": {
+    		"navigationBarTitleText": "编辑资料"
+    	}
+    },
 		{
 			"path": "pages/tabbar/square/square",
 			"style": {}
