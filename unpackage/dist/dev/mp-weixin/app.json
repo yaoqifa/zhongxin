@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/editInfo/editInfo",
     "pages/tabbar/index/index",
+    "pages/editInfo/editInfo",
     "pages/tabbar/square/square",
     "pages/tabbar/message/message",
     "pages/tabbar/personal/personal",
@@ -50,5 +50,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap22.json"
 }

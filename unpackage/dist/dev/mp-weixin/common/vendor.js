@@ -1722,7 +1722,7 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 16));
 var _test = _interopRequireDefault(__webpack_require__(/*! ./modules/test */ 17));
-var _mutationTypes = __webpack_require__(/*! ./modules/mutation-types */ 18);var _mutations, _ref3;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _mutationTypes = __webpack_require__(/*! ./modules/mutation-types */ 18);var _mutations;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.use(_vuex.default);
 
@@ -1749,6 +1749,9 @@ _mutationTypes.CHANGE_SELECTED_TAGS, function (state, _ref2) {var type = _ref2.t
     4: 'selectedCharacterTags' };
 
   state[tagMap[type]] = tags;
+}), _defineProperty(_mutations, "setUserInfo", function setUserInfo(
+state, provider) {
+  state.userInfo = provider;
 }), _mutations);
 
 
@@ -1761,7 +1764,7 @@ var actions = {
   } };
 
 
-var store = new _vuex.default.Store((_ref3 = {
+var store = new _vuex.default.Store({
   state: {
     userInfo: uni.getStorageSync('userInfo') || {},
     hobbyTags: [],
@@ -1773,15 +1776,10 @@ var store = new _vuex.default.Store((_ref3 = {
     selectedFoodTags: [],
     selectedCharacterTags: [] },
 
-  mutations: {
-    setUserInfo: function setUserInfo(state, provider) {
-      state.userInfo = provider;
-    } },
-
   getter: getter,
-  actions: actions }, _defineProperty(_ref3, "mutations",
-mutations), _defineProperty(_ref3, "modules",
-modules), _ref3));var _default =
+  actions: actions,
+  mutations: mutations,
+  modules: modules });var _default =
 
 
 store;exports.default = _default;
@@ -8752,18 +8750,70 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 25:
+/*!*****************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.hasGuid = exports.hasLogin = void 0;var hasLogin = function hasLogin() {
+  var userInfo = uni.getStorageSync('userInfo') || {};
+  return userInfo.nickName;
+};exports.hasLogin = hasLogin;
+
+var hasGuid = function hasGuid() {
+  var guid = uni.getStorageSync('guid') || '';
+  return guid.length > 0;
+};exports.hasGuid = hasGuid;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 34:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 26);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 35);
 
 
 /***/ }),
 
-/***/ 26:
+/***/ 35:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8794,7 +8844,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 27);
+module.exports = __webpack_require__(/*! ./runtime */ 36);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8811,7 +8861,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 27:
+/***/ 36:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9543,7 +9593,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 28:
+/***/ 37:
 /*!****************************************************************!*\
   !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
   \****************************************************************/
@@ -9573,7 +9623,7 @@ var setDate = function setDate(type) {
 
 /***/ }),
 
-/***/ 29:
+/***/ 38:
 /*!********************************************************************!*\
   !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
   \********************************************************************/
@@ -9581,7 +9631,7 @@ var setDate = function setDate(type) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 30);
+Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 39);
 
 var constellationRange = [
 {
@@ -9640,38 +9690,7 @@ var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heigh
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 30:
+/***/ 39:
 /*!****************************************************************!*\
   !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/tool.js ***!
   \****************************************************************/
@@ -9693,27 +9712,6 @@ var setArrayRange = function setArrayRange(start, end, unit) {
   }
   return arr;
 };exports.setArrayRange = setArrayRange;
-
-/***/ }),
-
-/***/ 39:
-/*!*****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/index.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.hasGuid = exports.hasLogin = void 0;var hasLogin = function hasLogin() {
-  var userInfo = uni.getStorageSync('userInfo') || {};
-  return userInfo.nickName;
-};exports.hasLogin = hasLogin;
-
-var hasGuid = function hasGuid() {
-  var guid = uni.getStorageSync('guid') || '';
-  return guid.length > 0;
-};exports.hasGuid = hasGuid;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -10635,7 +10633,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/editInfo/editInfo": { "navigationBarTitleText": "编辑资料" }, "pages/tabbar/index/index": { "navigationBarTitleText": "zhongxin", "enablePullDownRefresh": true }, "pages/tabbar/square/square": {}, "pages/tabbar/message/message": {}, "pages/tabbar/personal/personal": {}, "pages/dynamics/dynamics": { "navigationBarTitleText": "我的动态" }, "pages/coupon/coupon": { "navigationBarTitleText": "桃花券" }, "pages/setting/setting": { "navigationBarTitleText": "设置" }, "pages/editInfo/setSchool": { "navigationBarTitleText": "" }, "pages/tags/tags": { "navigationBarTitleText": "" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#fff", "backgroundColor": "#fff" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/tabbar/index/index": { "navigationBarTitleText": "zhongxin", "enablePullDownRefresh": true }, "pages/editInfo/editInfo": { "navigationBarTitleText": "编辑资料" }, "pages/tabbar/square/square": {}, "pages/tabbar/message/message": {}, "pages/tabbar/personal/personal": {}, "pages/dynamics/dynamics": { "navigationBarTitleText": "我的动态" }, "pages/coupon/coupon": { "navigationBarTitleText": "桃花券" }, "pages/setting/setting": { "navigationBarTitleText": "设置" }, "pages/editInfo/setSchool": { "navigationBarTitleText": "" }, "pages/tags/tags": { "navigationBarTitleText": "" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#fff", "backgroundColor": "#fff" } };exports.default = _default;
 
 /***/ }),
 
