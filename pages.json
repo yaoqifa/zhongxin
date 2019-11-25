@@ -13,6 +13,12 @@
 				"navigationBarTitleText": "编辑资料"
 			}
 		},
+    {
+    	"path": "pages/editInfo/editInfo",
+    	"style": {
+    		"navigationBarTitleText": "编辑资料"
+    	}
+    },
 		{
 			"path": "pages/tabbar/square/square",
 			"style": {}

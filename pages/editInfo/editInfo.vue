@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 <template lang="pug">
 	view.edit-info
 		view.photos
@@ -6,14 +8,14 @@
 				text.small-t (*请您至少上传一张真人照片哦～)
 			view.photo-wrap
 				view.pw-left
-					image(v-if="photos[0]" :src="photos[0]" mode="cover")
+					image.full-size(v-if="photos[0]" :src="photos[0]" mode="aspectFill")
 					button.photo-btn(v-else @click="addPhoto(0)") +
 				view.pw-right
 					view.pwr-top
-						image(v-if="photos[1]" :src="photos[1]" mode="cover")
+						image.full-size(v-if="photos[1]" :src="photos[1]" mode="aspectFill")
 						button.photo-btn(v-else @click="addPhoto(1)") +
 					view.pwr-bottom
-						image(v-if="photos[2]" :src="photos[2]" mode="cover")
+						image.full-size(v-if="photos[2]" :src="photos[2]" mode="aspectFill")
 						button.photo-btn(v-else @click="addPhoto(2)") +
 
 		view.basic-info
@@ -125,7 +127,7 @@
 				uni.chooseImage({
 					count: 1,
 					success: (res) => {
-						this.photos[index] = res.tempFilePaths[0]
+            this.$set(this.photos, index, res.tempFilePaths[0])
 					},
 					fail: (res) => {
 						console.log(res)
@@ -204,7 +206,8 @@
 			.photo-wrap {
 				display: flex;
 				height: 300rpx;
-				.pw-left {
+
+				.pw-left{
 					flex: 3;
 					margin-right: 10rpx;
 					border: 1px solid #ccc;
@@ -337,4 +340,3 @@
 		}
 	}
 </style>
-
