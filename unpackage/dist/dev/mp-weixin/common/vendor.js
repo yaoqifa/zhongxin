@@ -1498,10 +1498,10 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 102:
-/*!**********************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/pages/tags/const.js ***!
-  \**********************************************************************/
+/***/ 104:
+/*!*******************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/tags.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1601,103 +1601,6 @@ var characterTags = [
 { value: 0, label: '王者荣耀' },
 { value: 1, label: '爱做饭' },
 { value: 2, label: '二次元' }];exports.characterTags = characterTags;
-
-/***/ }),
-
-/***/ 132:
-/*!********************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 28);
-
-var constellationRange = [
-{
-  range: ['03-21', '04-19'],
-  name: '白羊座' },
-
-{
-  range: ['04-20', '05-20'],
-  name: '金牛座' },
-
-{
-  range: ['05-21', '06-21'],
-  name: '双子座' },
-
-{
-  range: ['06-22', '07-22'],
-  name: '巨蟹座' },
-
-{
-  range: ['07-23', '08-22'],
-  name: '狮子座' },
-
-{
-  range: ['08-23', '09-22'],
-  name: '处女座' },
-
-{
-  range: ['09-23', '10-23'],
-  name: '天秤座' },
-
-{
-  range: ['10-24', '11-22'],
-  name: '天蝎座' },
-
-{
-  range: ['11-23', '12-21'],
-  name: '射手座' },
-
-{
-  range: ['12-22', '01-19'],
-  name: '摩羯座' },
-
-{
-  range: ['01-20', '02-18'],
-  name: '水瓶座' },
-
-{
-  range: ['02-19', '03-20'],
-  name: '双鱼座' }];exports.constellationRange = constellationRange;
-
-
-
-var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
-
-var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
-
-/***/ }),
-
-/***/ 133:
-/*!****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
-                                                                                                      *  设置日期
-                                                                                                      * @param {*} type 日期年的范围
-                                                                                                      */
-var setDate = function setDate(type) {
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-
-  if (type === 'start') {
-    year = year - 60;
-  } else if (type === 'end') {
-    year = year - 18;
-  }
-  month = month > 9 ? month : '0' + month;
-  day = day > 9 ? day : '0' + day;
-  return "".concat(year, "-").concat(month, "-").concat(day);
-};exports.setDate = setDate;
 
 /***/ }),
 
@@ -1819,7 +1722,7 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 16));
 var _test = _interopRequireDefault(__webpack_require__(/*! ./modules/test */ 17));
-var _mutationTypes = __webpack_require__(/*! ./modules/mutation-types */ 18);var _mutations, _ref3;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _mutationTypes = __webpack_require__(/*! ./modules/mutation-types */ 18);var _mutations;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.use(_vuex.default);
 
@@ -1846,6 +1749,9 @@ _mutationTypes.CHANGE_SELECTED_TAGS, function (state, _ref2) {var type = _ref2.t
     4: 'selectedCharacterTags' };
 
   state[tagMap[type]] = tags;
+}), _defineProperty(_mutations, "setUserInfo", function setUserInfo(
+state, provider) {
+  state.userInfo = provider;
 }), _mutations);
 
 
@@ -1858,7 +1764,7 @@ var actions = {
   } };
 
 
-var store = new _vuex.default.Store((_ref3 = {
+var store = new _vuex.default.Store({
   state: {
     userInfo: uni.getStorageSync('userInfo') || {},
     hobbyTags: [],
@@ -1870,15 +1776,10 @@ var store = new _vuex.default.Store((_ref3 = {
     selectedFoodTags: [],
     selectedCharacterTags: [] },
 
-  mutations: {
-    setUserInfo: function setUserInfo(state, provider) {
-      state.userInfo = provider;
-    } },
-
   getter: getter,
-  actions: actions }, _defineProperty(_ref3, "mutations",
-mutations), _defineProperty(_ref3, "modules",
-modules), _ref3));var _default =
+  actions: actions,
+  mutations: mutations,
+  modules: modules });var _default =
 
 
 store;exports.default = _default;
@@ -8849,18 +8750,70 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 25:
+/*!*****************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.hasGuid = exports.hasLogin = void 0;var hasLogin = function hasLogin() {
+  var userInfo = uni.getStorageSync('userInfo') || {};
+  return userInfo.nickName;
+};exports.hasLogin = hasLogin;
+
+var hasGuid = function hasGuid() {
+  var guid = uni.getStorageSync('guid') || '';
+  return guid.length > 0;
+};exports.hasGuid = hasGuid;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 34:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 26);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 35);
 
 
 /***/ }),
 
-/***/ 26:
+/***/ 35:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8891,7 +8844,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 27);
+module.exports = __webpack_require__(/*! ./runtime */ 36);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8908,7 +8861,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 27:
+/***/ 36:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9640,7 +9593,104 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 28:
+/***/ 37:
+/*!****************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/date.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.setDate = void 0; /**
+                                                                                                      *  设置日期
+                                                                                                      * @param {*} type 日期年的范围
+                                                                                                      */
+var setDate = function setDate(type) {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  if (type === 'start') {
+    year = year - 60;
+  } else if (type === 'end') {
+    year = year - 18;
+  }
+  month = month > 9 ? month : '0' + month;
+  day = day > 9 ? day : '0' + day;
+  return "".concat(year, "-").concat(month, "-").concat(day);
+};exports.setDate = setDate;
+
+/***/ }),
+
+/***/ 38:
+/*!********************************************************************!*\
+  !*** /Users/qifa/study/HbuilderProject/zhongxin/constant/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.heightRange = exports.educationRange = exports.constellationRange = void 0;var _tool = __webpack_require__(/*! @/utils/tool */ 39);
+
+var constellationRange = [
+{
+  range: ['03-21', '04-19'],
+  name: '白羊座' },
+
+{
+  range: ['04-20', '05-20'],
+  name: '金牛座' },
+
+{
+  range: ['05-21', '06-21'],
+  name: '双子座' },
+
+{
+  range: ['06-22', '07-22'],
+  name: '巨蟹座' },
+
+{
+  range: ['07-23', '08-22'],
+  name: '狮子座' },
+
+{
+  range: ['08-23', '09-22'],
+  name: '处女座' },
+
+{
+  range: ['09-23', '10-23'],
+  name: '天秤座' },
+
+{
+  range: ['10-24', '11-22'],
+  name: '天蝎座' },
+
+{
+  range: ['11-23', '12-21'],
+  name: '射手座' },
+
+{
+  range: ['12-22', '01-19'],
+  name: '摩羯座' },
+
+{
+  range: ['01-20', '02-18'],
+  name: '水瓶座' },
+
+{
+  range: ['02-19', '03-20'],
+  name: '双鱼座' }];exports.constellationRange = constellationRange;
+
+
+
+var educationRange = ['高中及以下', '大专', '本科', '硕士', '博士'];exports.educationRange = educationRange;
+
+var heightRange = (0, _tool.setArrayRange)(100, 230);exports.heightRange = heightRange;
+
+/***/ }),
+
+/***/ 39:
 /*!****************************************************************!*\
   !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/tool.js ***!
   \****************************************************************/
@@ -9662,58 +9712,6 @@ var setArrayRange = function setArrayRange(start, end, unit) {
   }
   return arr;
 };exports.setArrayRange = setArrayRange;
-
-/***/ }),
-
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 37:
-/*!*****************************************************************!*\
-  !*** /Users/qifa/study/HbuilderProject/zhongxin/utils/index.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.hasGuid = exports.hasLogin = void 0;var hasLogin = function hasLogin() {
-  var userInfo = uni.getStorageSync('userInfo') || {};
-  return userInfo.nickName;
-};exports.hasLogin = hasLogin;
-
-var hasGuid = function hasGuid() {
-  var guid = uni.getStorageSync('guid') || '';
-  return guid.length > 0;
-};exports.hasGuid = hasGuid;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -10635,7 +10633,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/editInfo/editInfo": { "navigationBarTitleText": "编辑资料" }, "pages/tabbar/index/index": { "navigationBarTitleText": "zhongxin", "enablePullDownRefresh": true }, "pages/tabbar/square/square": {}, "pages/tabbar/message/message": {}, "pages/tabbar/personal/personal": {}, "pages/dynamics/dynamics": { "navigationBarTitleText": "我的动态" }, "pages/coupon/coupon": { "navigationBarTitleText": "桃花券" }, "pages/setting/setting": { "navigationBarTitleText": "设置" }, "pages/editInfo/setSchool": { "navigationBarTitleText": "" }, "pages/tags/tags": { "navigationBarTitleText": "" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#fff", "backgroundColor": "#fff" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/tabbar/index/index": { "navigationBarTitleText": "zhongxin", "enablePullDownRefresh": true }, "pages/editInfo/editInfo": { "navigationBarTitleText": "编辑资料" }, "pages/tabbar/square/square": {}, "pages/tabbar/message/message": {}, "pages/tabbar/personal/personal": {}, "pages/dynamics/dynamics": { "navigationBarTitleText": "我的动态" }, "pages/coupon/coupon": { "navigationBarTitleText": "桃花券" }, "pages/setting/setting": { "navigationBarTitleText": "设置" }, "pages/editInfo/setSchool": { "navigationBarTitleText": "" }, "pages/tags/tags": { "navigationBarTitleText": "" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#fff", "backgroundColor": "#fff" } };exports.default = _default;
 
 /***/ }),
 

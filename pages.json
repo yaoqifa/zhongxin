@@ -1,16 +1,16 @@
 {
 	"pages": [
 		{
-			"path": "pages/editInfo/editInfo",
-			"style": {
-				"navigationBarTitleText": "编辑资料"
-			}
-		},
-		{
 			"path": "pages/tabbar/index/index",
 			"style": {
 				"navigationBarTitleText": "zhongxin",
 				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/editInfo/editInfo",
+			"style": {
+				"navigationBarTitleText": "编辑资料"
 			}
 		},
 		{

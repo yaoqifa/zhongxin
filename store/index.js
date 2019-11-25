@@ -29,6 +29,9 @@ const mutations = {
     };
     state[tagMap[type]] = tags;
   },
+  setUserInfo(state, provider) {
+    state.userInfo = provider
+  }
 };
 
 const actions = {
@@ -51,11 +54,6 @@ const store = new Vuex.Store({
     selectedTravelTags: [],
     selectedFoodTags: [],
     selectedCharacterTags: [],
-  },
-  mutations: {
-    setUserInfo(state, provider) {
-      state.userInfo = provider
-    }
   },
   getter,
   actions,

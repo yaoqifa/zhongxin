@@ -26,11 +26,11 @@
 .tag {
 	height: 50rpx;
 	line-height: 50rpx;
-	font-size: 15px;
-	padding: 0 13rpx;
-	color: #777;
-	border: 1px solid #777;
-	border-radius: 5px;
+	font-size: 13px;
+	padding: 0 12rpx;
+	color: #666;
+	border: 1px solid #666;
+	border-radius: 10rpx;
 }
 .selected {
 	background-color: #343434;

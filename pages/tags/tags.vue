@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { tagTitleMap, hobbyTags, travelTags, foodTags, characterTags } from './const.js';
+import { tagTitleMap, hobbyTags, travelTags, foodTags, characterTags } from '@/constant/tags';
 import tag from './tag';
 
 const tagMap = {
@@ -42,9 +42,6 @@ export default {
 			tags: [],
 		};
 	},
-  computed: {
-    
-  },
 	onLoad(opts) {
 		this.type = opts.type;
 		this.initTags(tagMap[this.type], this.defaultTags);
@@ -75,7 +72,6 @@ export default {
 			const has = this.tags.some((p) => {
 				return p.label === this.customizeTag;
 			});
-      console.log('has', has);
 			if (has) {
 				uni.showToast({
 						title: `${this.customizeTag}标签已经存在`,
@@ -97,21 +93,21 @@ export default {
 .tags-container {
 	padding: 40rpx 25rpx 0;
 	.title {
-		font-size: 23px;
+		font-size: 16px;
 		color: #000;
-		font-weight: 700;
+		font-weight: bold;
 		.desc {
-			color: #ccc;
-			font-size: 12px;
-			font-weight: 300;
-			margin-left: 3rpx;
+			color: #999;
+			font-size: 10px;
+			margin-left: 4rpx;
+			font-weight: normal;
 		}
 	}
 	.input-container {
-		padding: 31rpx 0 37rpx;
+		padding: 30rpx 0 40rpx;
 		display: flex;
 		justify-content: space-between;
-		font-size: 18px;
+		font-size: 14px;
 		.input-style {
 			outline: none;
 			border: none;
@@ -124,7 +120,7 @@ export default {
 			height: 50rpx;
 			text-align: center;
 			line-height: 50rpx;
-			border-radius: 5px;
+			border-radius: 10rpx;
 		}
 	}
 	.tag-list {
